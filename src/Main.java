@@ -1,21 +1,26 @@
-import java.util.Scanner; //
+import java.util.Scanner;
 
 class Node {
     int key;
     Node left, right;
+
     public Node(int item) {
         key = item;
         left = right = null;
     }
 }
+
 class BinaryTree {
     Node root;
+
     BinaryTree() {
         root = null;
     }
+
     void insert(int key) {
         root = insertRec(root, key);
     }
+
     Node insertRec(Node root, int key) {
         if (root == null) {
             root = new Node(key);
@@ -27,9 +32,11 @@ class BinaryTree {
             root.right = insertRec(root.right, key);
         return root;
     }
+
     void inorder() {
         inorderRec(root);
     }
+
     void inorderRec(Node root) {
         if (root != null) {
             inorderRec(root.left);
@@ -37,6 +44,7 @@ class BinaryTree {
             inorderRec(root.right);
         }
     }
+
     void preorder() {
         preorderRec(root);
     }
@@ -68,9 +76,11 @@ class BinaryTree {
             return search(root.left, key);
         return search(root.right, key);
     }
+
     void delete(int key) {
         root = deleteRec(root, key);
     }
+
     Node deleteRec(Node root, int key) {
         if (root == null)
             return root;
@@ -88,6 +98,7 @@ class BinaryTree {
         }
         return root;
     }
+
     int minValue(Node root) {
         int minv = root.key;
         while (root.left != null) {
@@ -97,10 +108,12 @@ class BinaryTree {
         return minv;
     }
 }
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
+
         while (true) {
             System.out.println("\nBinary Tree Operations:");
             System.out.println("1. Insert");
@@ -111,7 +124,9 @@ public class Main {
             System.out.println("6. Delete");
             System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
+
             int choice = scanner.nextInt();
+
             switch (choice) {
                 case 1:
                     System.out.print("Enter the key to insert: ");
@@ -119,21 +134,25 @@ public class Main {
                     tree.insert(key);
                     System.out.println("Key " + key + " inserted into the tree.");
                     break;
+
                 case 2:
                     System.out.print("Inorder Traversal: ");
                     tree.inorder();
                     System.out.println();
                     break;
+
                 case 3:
                     System.out.print("Preorder Traversal: ");
                     tree.preorder();
                     System.out.println();
                     break;
+
                 case 4:
                     System.out.print("Postorder Traversal: ");
                     tree.postorder();
                     System.out.println();
                     break;
+
                 case 5:
                     System.out.print("Enter the key to search: ");
                     key = scanner.nextInt();
@@ -143,16 +162,19 @@ public class Main {
                     else
                         System.out.println("Key " + key + " not found in the tree.");
                     break;
+
                 case 6:
                     System.out.print("Enter the key to delete: ");
                     key = scanner.nextInt();
                     tree.delete(key);
                     System.out.println("Key " + key + " deleted from the tree.");
                     break;
+
                 case 7:
                     System.out.println("Exiting program...");
                     scanner.close();
                     System.exit(0);
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
