@@ -105,9 +105,11 @@ public class Main {
             System.out.println("\nBinary Tree Operations:");
             System.out.println("1. Insert");
             System.out.println("2. Inorder Traversal");
-            System.out.println("3. Search");
-            System.out.println("4. Delete");
-            System.out.println("5. Exit");
+            System.out.println("3. Preorder Traversal");
+            System.out.println("4. Postorder Traversal");
+            System.out.println("5. Search");
+            System.out.println("6. Delete");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             switch (choice) {
