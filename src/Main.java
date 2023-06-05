@@ -37,6 +37,30 @@ class BinaryTree {
             inorderRec(root.right);
         }
     }
+    void preorder() {
+        preorderRec(root);
+    }
+
+    void preorderRec(Node root) {
+        if (root != null) {
+            System.out.print(root.key + " ");
+            preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    void postorder() {
+        postorderRec(root);
+    }
+
+    void postorderRec(Node root) {
+        if (root != null) {
+            postorderRec(root.left);
+            postorderRec(root.right);
+            System.out.print(root.key + " ");
+        }
+    }
+
     Node search(Node root, int key) {
         if (root == null || root.key == key)
             return root;
@@ -99,6 +123,16 @@ public class Main {
                     System.out.println();
                     break;
                 case 3:
+                    System.out.print("Preorder Traversal: ");
+                    tree.preorder();
+                    System.out.println();
+                    break;
+                case 4:
+                    System.out.print("Postorder Traversal: ");
+                    tree.postorder();
+                    System.out.println();
+                    break;
+                case 5:
                     System.out.print("Enter the key to search: ");
                     key = scanner.nextInt();
                     Node result = tree.search(tree.root, key);
@@ -107,13 +141,13 @@ public class Main {
                     else
                         System.out.println("Key " + key + " not found in the tree.");
                     break;
-                case 4:
+                case 6:
                     System.out.print("Enter the key to delete: ");
                     key = scanner.nextInt();
                     tree.delete(key);
                     System.out.println("Key " + key + " deleted from the tree.");
                     break;
-                case 5:
+                case 7:
                     System.out.println("Exiting program...");
                     scanner.close();
                     System.exit(0);
